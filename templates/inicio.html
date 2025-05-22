@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>🔥 Inicio | Torneos Free Fire</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../static/inicio.css" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+</head>
+<body>
+
+<header>
+  <h1>🔥 ¡Bienvenido a los Torneos de Free Fire!</h1>
+  <p>💥 Demuestra tu nivel, gana diamantes y dinero real jugando.</p>
+</header>
+
+<main class="categorias-container">
+  <div class="categoria-card solo" onclick="irCategoria('/solo')">
+    <h2>🧍 Torneos Solo</h2>
+    <p><strong>¿Eres un lobo solitario?</strong> Lucha solo contra todos y conquista el mapa.</p>
+  </div>
+
+  <div class="categoria-card duo" onclick="irCategoria('/duos')">
+    <h2>👬 Torneos Dúo</h2>
+    <p><strong>¡En pareja se gana mejor!</strong> Combina fuerza y estrategia con tu compañero.</p>
+  </div>
+
+  <div class="categoria-card escuadra" onclick="irCategoria('/escuadras')">
+    <h2>👨‍👨‍👦‍👦 Torneos Escuadra</h2>
+    <p><strong>Forma tu team ideal</strong> y toma el control del campo de batalla en equipo.</p>
+  </div>
+
+  <div class="categoria-card diamantes" onclick="irCategoria('/diamantes')">
+    <h2>💎 Diamantes Baratos</h2>
+    <p><strong>¡Recarga segura y económica!</strong> Precios especiales, entrega inmediata.</p>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2025 Free Fire Torneos | ⚔️ ¡Juega. Gana. Cobra!</p>
+</footer>
+
+<!-- BOTÓN WHATSAPP FLOTANTE -->
+<a href="https://wa.me/524661002589?text=Hola%2C%20quiero%20informes%20sobre%20torneos%20de%20Free%20Fire" target="_blank" class="whatsapp-btn">
+  <i class="bi bi-whatsapp"></i>
+</a>
+
+
+<script>
+  function irCategoria(pagina) {
+    window.location.href = pagina;
+  }
+</script>
+
+</body>
+</html>

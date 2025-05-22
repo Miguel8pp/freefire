@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Torneos ESCUADRA - Free Fire</title>
+  <link rel="stylesheet" href="../static/freefire.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body>
+
+<header>
+  <h1>Torneos (ESCUADRA) - Free Fire</h1>
+  <p>Arma tu escuadra y compitan por premios en diamantes o dinero</p>
+</header>
+
+<main class="torneos-container">
+
+  <section class="torneo bajo">
+    <h2>💰 Torneo Nivel Bajo</h2>
+    <p>Entrada: $6 USD por escuadra</p>
+    <p>1 KILL = $1 USD o 100 diamantes (no revivir)</p>
+    <button onclick="inscribirse('Escuadra - Bajo')">Inscribirse</button>
+  </section>
+
+  <section class="torneo medio">
+    <h2>💸 Torneo Nivel Medio</h2>
+    <p>Entrada: $10 USD por escuadra</p>
+    <ul>
+      <li>🥇 1er lugar: $60 USD o 8720 diamantes</li>
+      <li>🥈 2º y 3º lugar: $16 USD o 2280 diamantes por equipo</li>
+    </ul>
+    <button onclick="inscribirse('Escuadra - Medio')">Inscribirse</button>
+  </section>
+
+  <section class="torneo alto">
+    <h2>🏆 Torneo Nivel Alto</h2>
+    <p>Entrada: $20 USD por escuadra</p>
+    <ul>
+      <li>🥇 1er lugar: $160 USD o 24,640 diamantes</li>
+      <li>🥈 2º y 3º lugar: $60 USD o 9600 diamantes por equipo</li>
+    </ul>
+    <button onclick="inscribirse('Escuadra - Alto')">Inscribirse</button>
+  </section>
+
+  <section class="torneo vip">
+    <h2>👑 Torneo VIP</h2>
+    <p>Entrada: $40 USD por escuadra</p>
+    <ul>
+      <li>🥇 1er lugar: $220 USD o 34,000 diamantes</li>
+      <li>🥈 2º lugar: $160 USD o 24,640 diamantes</li>
+      <li>🥉 3º lugar: $60 USD o 9600 diamantes</li>
+    </ul>
+    <button onclick="inscribirse('Escuadra - VIP')">Inscribirse</button>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 Free Fire Torneos | ESCUADRA</p>
+</footer>
+
+<!-- POPUP INSCRIPCIÓN -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="cerrarPopup()">&times;</span>
+    <h2>✅ Confirmar Inscripción</h2>
+    <p id="torneoSeleccionado">Torneo:</p>
+    <form onsubmit="enviarWhatsApp(); return false;">
+      <input type="text" id="nombre" placeholder="Tu nombre o apodo" required />
+      <input type="text" id="id" placeholder="ID de jugador"/>
+      <button type="submit">Inscribirme por WhatsApp</button>
+    </form>
+  </div>
+</div>
+
+<!-- BOTÓN WHATSAPP FLOTANTE -->
+<a href="https://wa.me/524661002589?text=Hola%2C%20quiero%20informes%20sobre%20torneos%20de%20Free%20Fire%20(escuadra)" target="_blank" class="whatsapp-btn">
+  <i class="bi bi-whatsapp"></i>
+</a>
+
+<script>
+  let torneo = "";
+
+  function inscribirse(nombreTorneo) {
+    torneo = nombreTorneo;
+    document.getElementById("torneoSeleccionado").textContent = "Torneo: " + torneo;
+    document.getElementById("popup").style.display = "flex";
+  }
+
+  function cerrarPopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+
+  function enviarWhatsApp() {
+    const nombre = document.getElementById("nombre").value;
+    const id = document.getElementById("id").value || "No proporcionado";
+    const numero = "524661002589";
+    const mensaje = `Hola, quiero inscribirme al torneo: ${torneo}%0ANombre: ${nombre}%0A🆔 ID: ${id}`;
+    window.open(`https://wa.me/${numero}?text=${mensaje}`, "_blank");
+    cerrarPopup();
+  }
+</script>
+
+</body>
+</html>

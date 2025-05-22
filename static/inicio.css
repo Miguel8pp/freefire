@@ -1,0 +1,123 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0f0f0f;
+  color: #f2f2f2;
+  text-align: center;
+}
+
+/* Encabezado */
+header {
+  background: linear-gradient(90deg, #ffc400, #ff3c00);
+  padding: 35px 20px;
+  border-bottom: 6px solid #ffd500;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+header h1 {
+  font-size: 2.8em;
+  color: #000;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+header p {
+  font-size: 1.2em;
+  color: #1a1a1a;
+  margin: 6px 0;
+  font-weight: 600;
+}
+
+/* Categorías */
+.categorias-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 30px;
+  padding: 50px 20px;
+}
+
+.categoria-card {
+  background-color: #1a1a1a;
+  border-radius: 15px;
+  padding: 30px 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease-in-out;
+  border-left: 8px solid #ffb100;
+  cursor: pointer;
+  text-align: left;
+}
+
+.categoria-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(255, 166, 0, 0.3);
+}
+
+.categoria-card h2 {
+  font-size: 1.7em;
+  color: #ffb100;
+  margin-bottom: 12px;
+  text-shadow: 0 0 3px rgba(255, 177, 0, 0.5);
+}
+
+.categoria-card p {
+  font-size: 1.05em;
+  color: #ccc;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.categoria-card p strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Colores según tipo */
+.categoria-card.solo     { border-left-color: #44ff44; }
+.categoria-card.duo      { border-left-color: #00d8ff; }
+.categoria-card.escuadra { border-left-color: #ff4444; }
+.categoria-card.diamantes { border-left-color: #00ffcc; }
+
+/* Footer */
+footer {
+  background-color: #111;
+  padding: 25px;
+  color: #aaa;
+  font-size: 1em;
+  border-top: 1px solid #222;
+}
+
+
+.whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  animation: breathe 2s ease-in-out infinite;
+}
+
+.whatsapp-btn i {
+  color: #fff;
+  font-size: 24px;
+  animation: beat 2s ease-in-out infinite;
+  text-decoration: none;
+}
+
+@keyframes breathe {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); }
+}
+
+@keyframes beat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}

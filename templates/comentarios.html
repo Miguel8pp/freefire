@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Comentarios - {{ categoria }}</title>
+  <link rel="stylesheet" href="/static/comentarios.css">
+</head>
+<body>
+
+<h1>Comentarios sobre: {{ categoria|capitalize }}</h1>
+
+<nav>
+  <a href="{{ url_for('comentarios', categoria='general') }}" 
+     style="color: {% if categoria == 'general' %}#00ffd5{% else %}#fff{% endif %}; margin-right:15px;">
+     General
+  </a>
+  <a href="{{ url_for('comentarios', categoria='diamantes') }}" 
+     style="color: {% if categoria == 'diamantes' %}#00ffd5{% else %}#fff{% endif %}; margin-right:15px;">
+     Diamantes
+  </a>
+  <a href="{{ url_for('comentarios', categoria='torneos') }}" 
+     style="color: {% if categoria == 'torneos' %}#00ffd5{% else %}#fff{% endif %};">
+     Torneos
+  </a>
+</nav>
+
+<form method="POST" style="margin-top: 30px;">
+  <input type="text" name="nombre" placeholder="Tu nombre" required>
+  <textarea name="comentario" placeholder="Escribe tu opinión..." required></textarea>
+
+  <label for="estrellas">Calificación:</label>
+  <select name="estrellas" required>
+    {% for i in range(1,6) %}
+      <option value="{{ i }}">{{ i }} estrella{{ 's' if i > 1 }}</option>
+    {% endfor %}
+  </select>
+
+  <label for="categoria">Categoría:</label>
+  <select name="categoria" required>
+    {% for cat in categorias %}
+      <option value="{{ cat }}" {% if cat == categoria %}selected{% endif %}>{{ cat.capitalize() }}</option>
+    {% endfor %}
+  </select>
+
+  <button type="submit">Enviar Comentario</button>
+</form>
+
+<hr>
+
+<div class="comentarios">
+  {% for c in comentarios %}
+    <div class="comentario">
+      <strong>{{ c.nombre }}</strong> - 
+      <span>{{ c.fecha.strftime('%d/%m/%Y %H:%M') }}</span>
+      <p>{{ c.comentario }}</p>
+      <p>Calificación: {{ '⭐' * c.estrellas }}</p>
+      <button onclick="reportarComentario('{{ c._id }}')">🚩 Reportar</button>
+    </div>
+  {% else %}
+    <p>No hay comentarios para esta categoría.</p>
+  {% endfor %}
+</div>
+
+<script>
+  function reportarComentario(id) {
+    fetch(`/reportar/${id}`, {method: "POST"})
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("Comentario reportado.");
+          location.reload();
+        }
+      });
+  }
+</script>
+
+</body>
+</html>
