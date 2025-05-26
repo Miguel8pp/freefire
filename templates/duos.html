@@ -69,7 +69,7 @@
     <h2>✅ Confirmar Inscripción</h2>
     <p id="torneoSeleccionado">Torneo:</p>
 
-    <div class="metodos-pago" id="metodosPago" style="display:none;">
+    <div class="metodos-pago" id="metodosPago" >
       <h3>💳 Métodos de Pago:</h3>
       <ul>
         <li><strong>Depósito en Oxxo:</strong> 2242 1702 1012 1364</li>
@@ -126,17 +126,19 @@
     cerrarPopup();
   }
 
-  function toggleMetodosPago() {
-    const metodos = document.getElementById("metodosPago");
-    const boton = document.getElementById("togglePagoBtn");
-    if (metodos.style.display === "none") {
-      metodos.style.display = "block";
-      boton.textContent = "Ocultar métodos de pago";
-    } else {
-      metodos.style.display = "none";
-      boton.textContent = "Ver métodos de pago";
-    }
+function toggleMetodosPago() {
+  const metodos = document.getElementById("metodosPago");
+  const boton = document.getElementById("togglePagoBtn");
+
+  if (metodos.classList.contains("mostrar")) {
+    metodos.classList.remove("mostrar");
+    boton.textContent = "Ver métodos de pago";
+  } else {
+    metodos.classList.add("mostrar");
+    boton.textContent = "Ocultar métodos de pago";
   }
+}
+
 </script>
 </body>
 </html>

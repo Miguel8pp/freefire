@@ -66,6 +66,24 @@
     <span class="close" onclick="cerrarPopup()">&times;</span>
     <h2>✅ Confirmar Inscripción</h2>
     <p id="torneoSeleccionado">Torneo:</p>
+
+    <div class="metodos-pago" id="metodosPago" >
+      <h3>💳 Métodos de Pago:</h3>
+      <ul>
+        <li><strong>Depósito en Oxxo:</strong> 2242 1702 1012 1364</li>
+        <li><strong>Transferencia:</strong> 728969000023825614</li>
+        <li><strong>Binance:</strong> 1051744842</li>
+      </ul>
+      <p style="margin-top: 10px;">
+        Por favor, envía tu <strong>nombre</strong>, <strong>ID</strong> y
+        <strong>comprobante de pago</strong> para registrarte y enviarte detalles del torneo.
+      </p>
+    </div>
+
+    <button id="togglePagoBtn" onclick="toggleMetodosPago()" style="margin-bottom: 10px;">
+      Ver métodos de pago
+    </button>
+
     <form onsubmit="enviarWhatsApp(); return false;">
       <input type="text" id="nombre" placeholder="Tu nombre o apodo" required />
       <input type="text" id="id" placeholder="ID de jugador"/>
@@ -73,6 +91,7 @@
     </form>
   </div>
 </div>
+
 
 <!-- BOTÓN WHATSAPP FLOTANTE -->
 <a href="https://wa.me/524661002589?text=Hola%2C%20quiero%20informes%20sobre%20torneos%20de%20Free%20Fire%20(escuadra)" target="_blank" class="whatsapp-btn">
@@ -100,6 +119,21 @@
     window.open(`https://wa.me/${numero}?text=${mensaje}`, "_blank");
     cerrarPopup();
   }
+
+function toggleMetodosPago() {
+  const metodos = document.getElementById("metodosPago");
+  const boton = document.getElementById("togglePagoBtn");
+
+  if (metodos.classList.contains("mostrar")) {
+    metodos.classList.remove("mostrar");
+    boton.textContent = "Ver métodos de pago";
+  } else {
+    metodos.classList.add("mostrar");
+    boton.textContent = "Ocultar métodos de pago";
+  }
+}
+
+
 </script>
 
 </body>
