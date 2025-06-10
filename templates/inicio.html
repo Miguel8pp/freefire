@@ -2,314 +2,248 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>🔥 Inicio | Torneos Free Fire</title>
+  <title>🔥 Torneos Free Fire</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../static/inicio.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 
   <style>
-    /* Modal background */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 20px 10px;
+      background: linear-gradient(to right, #ff5722, #ffc107);
+      color: #000;
+    }
+
+    header h1 {
+      font-size: 2.4em;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2em;
+      font-weight: 500;
+    }
+
+    .categorias-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      padding: 40px 20px;
+    }
+
+    .categoria-card {
+      background: #1c1c1c;
+      border: 2px solid transparent;
+      border-radius: 16px;
+      padding: 25px 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .categoria-card:hover {
+      border-color: #ffc107;
+      transform: scale(1.05);
+      box-shadow: 0 0 18px rgba(255, 193, 7, 0.4);
+    }
+
+    .categoria-card h2 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      color: #ffc107;
+    }
+
+    .categoria-card p {
+      font-size: 1em;
+      color: #ccc;
+    }
+
+    .ir-comentarios {
+      background: #222;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    .ir-comentarios h2 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    .boton-comentarios {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 12px 28px;
+      background: #ffc107;
+      color: #000;
+      font-weight: bold;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .boton-comentarios:hover {
+      background: #ffb300;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #111;
+      font-size: 0.9em;
+      color: #777;
+    }
+
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      color: #fff;
+      font-size: 2em;
+      padding: 12px;
+      border-radius: 50%;
+      text-align: center;
+      box-shadow: 0 0 12px #25d366;
+      z-index: 999;
+    }
+
+    /* Modal */
     #modal-info {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.75);
+      background: rgba(0, 0, 0, 0.8);
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 10000;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.4s ease;
+      z-index: 10000;
     }
+
     #modal-info.active {
       opacity: 1;
       pointer-events: auto;
     }
 
-    /* Modal content box */
     #modal-info .modal-content {
-      background: linear-gradient(135deg, #1a1a1a 0%, #2b2b2b 100%);
-      padding: 35px 30px;
-      border-radius: 16px;
-      max-width: 420px;
-      width: 90%;
-      color: #ffd500;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fff;
+      color: #111;
+      padding: 30px 25px;
+      border-radius: 14px;
       text-align: center;
-      box-shadow:
-        0 0 12px #ffb700,
-        0 4px 20px rgba(255, 183, 0, 0.3);
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 0 20px #ff9800;
       transform: scale(0.8);
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.4s ease;
     }
+
     #modal-info.active .modal-content {
       transform: scale(1);
     }
 
     #modal-info h2 {
-      margin: 0 0 15px;
-      font-size: 2.2em;
-      letter-spacing: 1.5px;
-      text-shadow:
-        0 0 10px #ffd500,
-        0 0 20px #ffdb44;
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      color: #ff9800;
     }
 
     #modal-info p {
-      font-size: 1.15em;
-      line-height: 1.5;
-      margin-bottom: 30px;
-      color: #fff;
-      font-weight: 600;
-      text-shadow: 0 0 3px rgba(0,0,0,0.5);
-    }
-
-    #modal-info p strong {
-      color: #ffd500;
-      text-shadow: 0 0 6px #ffdd33;
+      font-size: 1em;
+      color: #333;
+      margin-bottom: 25px;
     }
 
     #modal-info button {
-      background: linear-gradient(135deg, #ffd500 0%, #ffb700 100%);
+      background: #ff9800;
+      color: #fff;
       border: none;
-      padding: 14px 36px;
-      font-size: 1.2em;
-      font-weight: 700;
-      border-radius: 12px;
+      padding: 12px 24px;
+      font-size: 1em;
+      border-radius: 10px;
       cursor: pointer;
-      color: #2a1a00;
-      box-shadow:
-        0 0 12px #ffb700,
-        0 6px 12px rgba(255, 183, 0, 0.4);
-      transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      transition: background 0.3s ease;
     }
 
     #modal-info button:hover {
-      background: linear-gradient(135deg, #ffca00 0%, #ffaa00 100%);
-      box-shadow:
-        0 0 16px #ffdd33,
-        0 8px 16px rgba(255, 204, 51, 0.7);
-      transform: scale(1.05);
-    }
-    #modal-info button:active {
-      transform: scale(0.98);
+      background: #ff5722;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>🔥 ¡Bienvenido a los Torneos de Free Fire!</h1>
-  <p>💥 Demuestra tu nivel, gana diamantes y dinero real jugando.</p>
+  <h1>🔥 Torneos Free Fire</h1>
+  <p>¡Demuestra tu nivel, gana diamantes y premios reales!</p>
 </header>
 
 <main class="categorias-container">
-  <div class="categoria-card solo" onclick="irCategoria('/solo')">
+  <div class="categoria-card" onclick="irCategoria('/solo')">
     <h2>🧍 Torneos Solo</h2>
-    <p><strong>¿Eres un lobo solitario?</strong> Lucha solo contra todos y conquista el mapa.</p>
+    <p>Lucha por tu cuenta y demuestra tu habilidad individual.</p>
   </div>
-
-  <div class="categoria-card duo" onclick="irCategoria('/duos')">
+  <div class="categoria-card" onclick="irCategoria('/duos')">
     <h2>👬 Torneos Dúo</h2>
-    <p><strong>¡En pareja se gana mejor!</strong> Combina fuerza y estrategia con tu compañero.</p>
+    <p>Forma pareja y compite en equipo.</p>
   </div>
-
-  <div class="categoria-card escuadra" onclick="irCategoria('/escuadras')">
+  <div class="categoria-card" onclick="irCategoria('/escuadras')">
     <h2>👨‍👨‍👦‍👦 Torneos Escuadra</h2>
-    <p><strong>Forma tu team ideal</strong> y toma el control del campo de batalla en equipo.</p>
+    <p>Juega con tu team y domina el campo.</p>
   </div>
-
-  <div class="categoria-card diamantes" onclick="irCategoria('/diamantes')">
+  <div class="categoria-card" onclick="irCategoria('/diamantes')">
     <h2>💎 Diamantes Baratos</h2>
-    <p><strong>¡Recarga segura y económica!</strong> Precios especiales, entrega inmediata.</p>
+    <p>Recarga segura, rápida y económica.</p>
   </div>
 </main>
 
 <section class="ir-comentarios">
-  <h2>💬 ¿Quieres ver lo que otros opinan?</h2>
-  <p>Visita nuestra sección de comentarios y comparte el tuyo.</p>
+  <h2>💬 ¿Qué dicen los jugadores?</h2>
+  <p>Visita la sección de comentarios y comparte el tuyo.</p>
   <a href="/comentarios" class="boton-comentarios">Ver Comentarios</a>
 </section>
 
 <footer>
-  <p>&copy; 2025 Free Fire Torneos | ⚔️ ¡Juega. Gana. Cobra!</p>
+  <p>&copy; 2025 Torneos Free Fire | ⚔️ Juega. Gana. Cobra.</p>
 </footer>
 
-<!-- BOTÓN WHATSAPP FLOTANTE -->
 <a href="https://wa.me/524661002589?text=Hola%2C%20quiero%20informes%20sobre%20torneos%20de%20Free%20Fire" target="_blank" class="whatsapp-btn">
   <i class="bi bi-whatsapp"></i>
 </a>
-
-<!-- Modal info -->
-<div id="modal-info">
-  <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
-    <h2 id="modal-title">⏳ Información Importante</h2>
-    <p id="modal-desc">
-      Los diamantes llegarán de <strong>20 minutos a 2 horas</strong>.<br>
-      Premios de torneos: <strong>hasta 24 horas</strong> después de finalizado el torneo.<br><br>
-      Después de enviar tu comprobante de pago por WhatsApp, se te enviará el grupo del torneo con horarios y detalles.
-    </p>
-    <button onclick="cerrarModal()" aria-label="Cerrar ventana de información">¡Entendido!</button>
-  </div>
-</div>
-
-<script>
-  function irCategoria(pagina) {
-    window.location.href = pagina;
-  }
-
-  // Mostrar modal al cargar la página
-  window.addEventListener('load', () => {
-    document.getElementById('modal-info').classList.add('active');
-  });
-
-  // Cerrar modal con animación suave
-  function cerrarModal() {
-    const modal = document.getElementById('modal-info');
-    modal.classList.remove('active');
-    // Opcional: eliminar del DOM después de animación para liberar recursos
-    setTimeout(() => {
-      modal.style.display = 'none';
-    }, 400);
-  }
-</script>
-
-</body>
-</html>
-
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8" />
-<title>🔥 Inicio | Torneos Free Fire</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<style>
-  body {
-    background-color: #111;
-    color: #fff;
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-  }
-
-  /* Modal Background */
-  #modal-info {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease;
-  }
-  #modal-info.active {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  /* Modal Box */
-  #modal-info .modal-content {
-    background: linear-gradient(135deg, #0099ff, #00ffd5);
-    padding: 35px 30px;
-    border-radius: 16px;
-    max-width: 420px;
-    width: 90%;
-    color: #000;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-align: center;
-    box-shadow:
-      0 0 15px #00ffd5,
-      0 5px 25px rgba(0, 255, 213, 0.4);
-    transform: scale(0.8);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  #modal-info.active .modal-content {
-    transform: scale(1);
-  }
-
-  #modal-info h2 {
-    margin: 0 0 15px;
-    font-size: 2.2em;
-    letter-spacing: 1.5px;
-    color: #000;
-    text-shadow:
-      0 0 10px #00ffd5,
-      0 0 20px #0099ff;
-  }
-
-  #modal-info p {
-    font-size: 1.15em;
-    line-height: 1.5;
-    margin-bottom: 30px;
-    font-weight: 600;
-    color: #000;
-    text-shadow: 0 0 3px rgba(255,255,255,0.6);
-  }
-
-  #modal-info p strong {
-    color: #004466;
-    text-shadow: none;
-  }
-
-  #modal-info button {
-    background: linear-gradient(135deg, #00ffd5 0%, #0099ff 100%);
-    border: none;
-    padding: 14px 36px;
-    font-size: 1.2em;
-    font-weight: 700;
-    border-radius: 12px;
-    cursor: pointer;
-    color: #fff;
-    box-shadow:
-      0 0 12px #00ffd5,
-      0 6px 14px rgba(0, 255, 213, 0.5);
-    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-  }
-
-  #modal-info button:hover {
-    background: linear-gradient(135deg, #0099ff 0%, #00ccaa 100%);
-    box-shadow:
-      0 0 16px #00ccaa,
-      0 8px 18px rgba(0, 204, 170, 0.8);
-    transform: scale(1.05);
-  }
-  #modal-info button:active {
-    transform: scale(0.98);
-  }
-</style>
-</head>
-<body>
-
-
 
 <!-- Modal -->
 <div id="modal-info" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
   <div class="modal-content">
     <h2 id="modal-title">⏳ Información Importante</h2>
     <p id="modal-desc">
-      Los diamantes llegarán de <strong>20 minutos a 2 horas</strong>.<br>
-      Premios de torneos: <strong>hasta 24 horas</strong> después de finalizado el torneo.<br><br>
-      Después de enviar tu comprobante de pago por WhatsApp, se te enviará el grupo del torneo con horarios y detalles.
+      Los diamantes llegan entre <strong>20 min y 2 horas</strong>.<br>
+      Los premios del torneo se entregan <strong>dentro de las 24 horas</strong> tras finalizar.<br><br>
+      Envíanos tu comprobante por WhatsApp para recibir detalles del torneo.
     </p>
-    <button onclick="cerrarModal()" aria-label="Cerrar ventana de información">¡Entendido!</button>
+    <button onclick="cerrarModal()">¡Entendido!</button>
   </div>
 </div>
 
 <script>
+  function irCategoria(url) {
+    window.location.href = url;
+  }
+
   const modal = document.getElementById('modal-info');
   const STORAGE_KEY = 'modalLastShown';
+  const ahora = Date.now();
+  const unDia = 24 * 60 * 60 * 1000;
 
   function mostrarModalSiCorresponde() {
-    const lastShown = localStorage.getItem(STORAGE_KEY);
-    const ahora = Date.now();
-    const unDia = 24 * 60 * 60 * 1000; // 24 horas en ms
-
-    if (!lastShown || (ahora - lastShown) > unDia) {
+    const ultimaVez = localStorage.getItem(STORAGE_KEY);
+    if (!ultimaVez || ahora - ultimaVez > unDia) {
       modal.classList.add('active');
       localStorage.setItem(STORAGE_KEY, ahora);
     }
@@ -319,20 +253,7 @@
     modal.classList.remove('active');
   }
 
-  // Mostrar modal solo si pasó más de 24h o nunca se mostró
   window.addEventListener('load', mostrarModalSiCorresponde);
-
-  // Opcional: cerrar modal con Escape
-  window.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-      cerrarModal();
-    }
-  });
-
-  // Opcional: cerrar modal al clickear fuera del contenido
-  modal.addEventListener('click', e => {
-    if (e.target === modal) cerrarModal();
-  });
 </script>
 
 </body>
