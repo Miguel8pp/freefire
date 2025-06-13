@@ -92,5 +92,10 @@ def reportar_comentario(id):
     collection.update_one({"_id": ObjectId(id)}, {"$set": {"reportado": True}})
     return jsonify({"success": True})
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+
 if __name__ == '__main__':
     socketio.run(app, debug=True)

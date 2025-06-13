@@ -12,6 +12,18 @@
     />
   </head>
   <body>
+    <nav class="navbar">
+  <div class="navbar-logo">👑 Mighost League</div>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <ul class="navbar-links" id="navbarLinks">
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/solo">SOLO</a></li>
+    <li><a href="/duos">DÚO</a></li>
+    <li><a href="/escuadras">ESCUADRAS</a></li>
+    <li><a href="/diamantes">DIAMANTES</a></li>
+    <li><a href="/contacto" >Contacto</a></li>
+  </ul>
+</nav>
     <header>
       <h1>💎 Compra Diamantes Más Baratos</h1>
       <p>Recargas seguras, rápidas y a un precio increíble</p>
@@ -234,5 +246,10 @@
 
       setInterval(actualizarContador, 1000);
     </script>
+    <script>
+  function toggleMenu() {
+    document.querySelector('.navbar-links').classList.toggle('show');
+  }
+</script>
   </body>
 </html>

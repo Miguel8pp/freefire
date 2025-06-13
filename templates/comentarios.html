@@ -7,7 +7,18 @@
   <link rel="stylesheet" href="/static/comentarios.css">
 </head>
 <body>
-
+<nav class="navbar">
+  <div class="navbar-logo">👑 Mighost League</div>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <ul class="navbar-links" id="navbarLinks">
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/solo">SOLO</a></li>
+    <li><a href="/duos">DÚO</a></li>
+    <li><a href="/escuadras">ESCUADRAS</a></li>
+    <li><a href="/diamantes">DIAMANTES</a></li>
+    <li><a href="/contacto" >Contacto</a></li>
+  </ul>
+</nav>
 <h1>Comentarios sobre: {{ categoria|capitalize }}</h1>
 
 <nav>
@@ -74,6 +85,10 @@
       });
   }
 </script>
-
+<script>
+  function toggleMenu() {
+    document.querySelector('.navbar-links').classList.toggle('show');
+  }
+</script>
 </body>
 </html>

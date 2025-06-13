@@ -252,3 +252,108 @@ footer {
 #togglePagoBtn:hover {
   background-color: #00c8aa;
 }
+
+
+/* NAVBAR GAMER */
+.navbar {
+  background-color: #1e1e2f;
+  color: #f1f1f1;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.navbar-logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #ff3c7e, #ffc107);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: pulseGlow 2s infinite alternate;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 18px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.navbar-links li a {
+  color: #f1f1f1;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.navbar-links li a:hover {
+  background: linear-gradient(to right, #ff3c7e, #ffc107);
+  color: #1e1e2f;
+  box-shadow: 0 0 10px #ff3c7e, 0 0 14px #ffc107;
+}
+
+/* Botón de menú para móviles */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #f1f1f1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #2a2a3f;
+    margin-top: 12px;
+    border-top: 1px solid #444;
+  }
+
+  .navbar-links.show {
+    display: flex;
+    animation: fadeIn 0.3s ease-in;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar-links li a {
+    padding: 12px 20px;
+    border-radius: 0;
+  }
+}
+
+/* Animaciones */
+@keyframes pulseGlow {
+  0% {
+    text-shadow: 0 0 6px #ff3c7e;
+  }
+  100% {
+    text-shadow: 0 0 12px #ffc107;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

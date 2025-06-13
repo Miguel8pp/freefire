@@ -8,7 +8,18 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
-
+<nav class="navbar">
+  <div class="navbar-logo">👑 Mighost League</div>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <ul class="navbar-links" id="navbarLinks">
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/solo">SOLO</a></li>
+    <li><a href="/duos">DÚO</a></li>
+    <li><a href="/escuadras">ESCUADRAS</a></li>
+    <li><a href="/diamantes">DIAMANTES</a></li>
+    <li><a href="/contacto" >Contacto</a></li>
+  </ul>
+</nav>
 <header>
   <h1>Torneos (DÚO) - Free Fire</h1>
   <p>Compite con tu compañero y ganen grandes premios en diamantes o dinero</p>
@@ -139,6 +150,11 @@ function toggleMetodosPago() {
   }
 }
 
+</script>
+<script>
+  function toggleMenu() {
+    document.querySelector('.navbar-links').classList.toggle('show');
+  }
 </script>
 </body>
 </html>
